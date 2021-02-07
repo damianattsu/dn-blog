@@ -8,6 +8,7 @@
         </nuxt-link>
       </li>
     </ul>
+    <p>dn-blogのトップページです。</p>
   </div>
 </template>
 
