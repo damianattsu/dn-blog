@@ -1,11 +1,14 @@
 <template>
-  <ul>
-    <li v-for="content in contents" :key="content.id">
-      <nuxt-link :to="`/${content.id}`">
-        {{ content.title }}
-      </nuxt-link>
-    </li>
-  </ul>
+  <div class="">
+    <h1>dn-blog</h1>
+    <ul>
+      <li v-for="content in contents" :key="content.id">
+        <nuxt-link :to="`/${content.id}`">
+          {{ content.title }}
+        </nuxt-link>
+      </li>
+    </ul>
+  </div>
 </template>
 
 <script>
