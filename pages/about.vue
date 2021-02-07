@@ -1,8 +1,9 @@
 <template>
-  <div class="">
-    <h2>About</h2>
-  </div>
-
+  <section class="contents">
+    <div class="wrapper">
+      <h2>About</h2>
+    </div>
+  </section>
 </template>
 
 <script>

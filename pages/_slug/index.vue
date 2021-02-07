@@ -1,12 +1,14 @@
 <template>
-  <div class="wrapper">
-    <main class="main">
-      <h1 class="title">{{ title }}</h1>
-      <p class="publishedAt">{{ publishedAt }}</p>
-      <p class="category">{{ category && category.name }}</p>
-      <div class="post" v-html="body"></div>
-    </main>
-  </div>
+  <section class="contents">
+    <div class="wrapper">
+      <main class="main">
+        <h1 class="title">{{ title }}</h1>
+        <p class="publishedAt">{{ publishedAt }}</p>
+        <p class="category">{{ category && category.name }}</p>
+        <div class="post" v-html="body"></div>
+      </main>
+    </div>
+  </section>
 </template>
 
 <script>
@@ -26,32 +28,24 @@ export default {
 </script>
 
 <style lang="scss">
-@import "../../assets/css/post.scss";
-
-.wrapper {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 15px;
-}
 .title {
-  margin-bottom: 20px;
+  letter-spacing: 0.1em;
+  margin-top: 0;
+  margin-bottom: 15px;
 }
-
 .publishedAt {
+  font-size: 14px;
   margin-bottom: 40px;
 }
-
 .post {
   & > h1 {
-    font-size: 30px;
+    font-size: 24px;
     font-weight: bold;
+    letter-spacing: 0.1em;
     margin: 40px 0 20px;
-    background-color: #eee;
-    padding: 10px 20px;
-    border-radius: 5px;
   }
   & > h2 {
-    font-size: 24px;
+    font-size: 20px;
     font-weight: bold;
     margin: 40px 0 16px;
     border-bottom: 1px solid #ddd;

@@ -1,7 +1,6 @@
 <template>
   <section class="contents">
     <div class="wrapper">
-      <h1>dn-blog</h1>
       <ul>
         <li v-for="content in contents" :key="content.id">
           <nuxt-link :to="`/${content.id}`">
@@ -9,10 +8,6 @@
           </nuxt-link>
         </li>
       </ul>
-      <p>dn-blogのトップページです。</p>
-      <nuxt-link to="/about">
-        About
-      </nuxt-link>
     </div>
   </section>
 </template>
@@ -32,10 +27,14 @@ export default {
 }
 </script>
 
-<style>
-  .wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+<style lang="scss" scoped>
+ul {
+  padding-left: 20px;
+  li {
+    margin-bottom: 15px;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
+}
 </style>
