@@ -1,18 +1,20 @@
 <template>
-  <div class="">
-    <h1>dn-blog</h1>
-    <ul>
-      <li v-for="content in contents" :key="content.id">
-        <nuxt-link :to="`/${content.id}`">
-          {{ content.title }}
-        </nuxt-link>
-      </li>
-    </ul>
-    <p>dn-blogのトップページです。</p>
-    <nuxt-link to="/about">
-      About
-    </nuxt-link>
-  </div>
+  <section class="contents">
+    <div class="wrapper">
+      <h1>dn-blog</h1>
+      <ul>
+        <li v-for="content in contents" :key="content.id">
+          <nuxt-link :to="`/${content.id}`">
+            {{ content.title }}
+          </nuxt-link>
+        </li>
+      </ul>
+      <p>dn-blogのトップページです。</p>
+      <nuxt-link to="/about">
+        About
+      </nuxt-link>
+    </div>
+  </section>
 </template>
 
 <script>

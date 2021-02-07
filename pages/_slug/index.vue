@@ -26,6 +26,8 @@ export default {
 </script>
 
 <style lang="scss">
+@import "../../assets/css/post.scss";
+
 .wrapper {
   max-width: 1200px;
   margin: 0 auto;
