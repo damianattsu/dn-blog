@@ -9,6 +9,9 @@
       </li>
     </ul>
     <p>dn-blogのトップページです。</p>
+    <nuxt-link to="/about">
+      About
+    </nuxt-link>
   </div>
 </template>
 
@@ -17,10 +20,8 @@ import axios from 'axios'
 export default {
   async asyncData() {
     const { data } = await axios.get(
-      // your-service-id部分は自分のサービスidに置き換えてください
       'https://dn-blog.microcms.io/api/v1/blog',
       {
-        // your-api-key部分は自分のapi-keyに置き換えてください
         headers: { 'X-API-KEY': '0217a727-1f1d-4c5a-bbef-9bf429a7b3fc' }
       }
     )
@@ -28,3 +29,11 @@ export default {
   }
 }
 </script>
+
+<style>
+  .wrapper {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 15px;
+  }
+</style>
