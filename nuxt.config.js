@@ -1,3 +1,6 @@
+require('dotenv').config();
+const { API_KEY } = process.env;
+
 import axios from 'axios'
 
 export default {
@@ -45,7 +48,12 @@ export default {
     // extractCSS: true,
   },
 
-
+  privateRuntimeConfig: {
+    apiKey: '0217a727-1f1d-4c5a-bbef-9bf429a7b3fc'
+  },
+  publicRuntimeConfig: {
+    apiKey: process.env.NODE_ENV !== 'production' ? '0217a727-1f1d-4c5a-bbef-9bf429a7b3fc' : undefined
+  },
   generate: {
     async routes() {
       const pages = await axios

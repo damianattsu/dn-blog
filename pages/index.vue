@@ -15,11 +15,11 @@
 <script>
 import axios from 'axios'
 export default {
-  async asyncData() {
+  async asyncData({ $config }) {
     const { data } = await axios.get(
       'https://dn-blog.microcms.io/api/v1/blog',
       {
-        headers: { 'X-API-KEY': '0217a727-1f1d-4c5a-bbef-9bf429a7b3fc' }
+        headers: { 'X-API-KEY': $config.apiKey }
       }
     )
     return data
