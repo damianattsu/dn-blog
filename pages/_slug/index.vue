@@ -5,7 +5,16 @@
         <h1 class="title">{{ title }}</h1>
         <p class="publishedAt">{{ publishedAt }}</p>
         <p class="category">{{ category && category.name }}</p>
+        <div v-if="main_image" class="image-wrapper">
+          <img :src="main_image.url" alt="">
+        </div>
+        <div v-else>
+          no image
+        </div>
         <div class="post" v-html="body"></div>
+        <nuxt-link to="/">
+          戻る
+        </nuxt-link>
       </main>
     </div>
   </section>
@@ -15,6 +24,11 @@
 import axios from 'axios'
 
 export default {
+  data() {
+    return {
+      main_image: ''
+    }
+  },
   async asyncData({ params, $config }) {
     const { data } = await axios.get(
       `https://dn-blog.microcms.io/api/v1/blog/${params.slug}`,
@@ -35,7 +49,14 @@ export default {
 }
 .publishedAt {
   font-size: 14px;
-  margin-bottom: 40px;
+  margin-bottom: 20px;
+}
+.image-wrapper {
+  img {
+    max-width: 100%;
+    display: block;
+    height: auto;
+  }
 }
 .post {
   & > h1 {
@@ -62,6 +83,13 @@ export default {
   & > ol {
     list-style-type: decimal;
     list-style-position: inside;
+  }
+  & > pre {
+    background-color: #333;
+    padding: 15px 15px;
+    code {
+      color: #fff;
+    }
   }
 }
 </style>

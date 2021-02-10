@@ -29,9 +29,10 @@ export default {
 
 <style lang="scss" scoped>
 ul {
-  padding-left: 20px;
+  padding-left: 0;
   li {
     margin-bottom: 15px;
+    list-style-type: none;
     &:last-child {
       margin-bottom: 0;
     }
