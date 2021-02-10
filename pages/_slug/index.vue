@@ -8,9 +8,6 @@
         <div v-if="main_image" class="image-wrapper">
           <img :src="main_image.url" alt="">
         </div>
-        <div v-else>
-          no image
-        </div>
         <div class="post" v-html="body"></div>
         <nuxt-link to="/">
           戻る
