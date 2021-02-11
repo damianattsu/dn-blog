@@ -42,8 +42,7 @@ export default {
 .title {
   font-size: 20px;
   font-weight: bold;
-  letter-spacing: 0.1em;
-  margin-top: 0;
+  letter-spacing: 0.5px;
   margin-bottom: 15px;
 }
 .publishedAt {
@@ -62,7 +61,7 @@ export default {
   & > h1 {
     font-size: 24px;
     font-weight: bold;
-    letter-spacing: 0.1em;
+    letter-spacing: 0.5px;
     margin: 40px 0 20px;
   }
   & > h2 {
@@ -71,23 +70,15 @@ export default {
     margin: 40px 0 16px;
     border-bottom: 1px solid #ddd;
   }
-  & > p {
-    font-size: 16px;
-    line-height: 1.8;
-    letter-spacing: 0.2px;
-    img {
-      max-width: 100%;
-      display: block;
-      height: auto;
-    }
-  }
-  & > ol {
-    list-style-type: decimal;
-    list-style-position: inside;
+  & > img {
+    max-width: 100%;
+    display: block;
+    height: auto;
   }
   & > pre {
     background-color: #333;
     padding: 15px 15px;
+    margin-top: 20px;
     code {
       color: #fff;
     }

@@ -36,6 +36,20 @@ html {
       margin: 0 auto;
       padding: 0 15px;
     }
+    h2 {
+      font-size: 20px;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      margin-bottom: 15px;
+    }
+    p {
+      font-size: 16px;
+      line-height: 2;
+      letter-spacing: 0.2px;
+      @include sp {
+        font-size: 14px;
+      }
+    }
   }
   .cf {
     &::before, &::after {

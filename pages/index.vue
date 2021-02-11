@@ -65,9 +65,11 @@ export default {
     a {
       display: block;
       h2 {
-        font-size: 16px;
-        letter-spacing: 0.1em;
+        font-size: 14px;
+        font-weight: normal;
+        letter-spacing: 0.5px;
         margin-top: 5px;
+        margin-bottom: 0;
         @include tab {
           font-size: 14px;
         }

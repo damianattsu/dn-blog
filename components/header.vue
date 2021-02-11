@@ -30,7 +30,7 @@ header {
     color: #fff;
     font-size: 24px;
     font-weight: normal;
-    letter-spacing: 0.2em;
+    letter-spacing: 2px;
     float: left;
   }
 }
