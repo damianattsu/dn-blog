@@ -57,7 +57,7 @@ export default {
   },
   generate: {
     async routes() {
-      const limit = 10
+      const limit = 3
       const range = (start, end) =>
         [...Array(end - start + 1)].map((_, i) => start + i)
 
