@@ -1,16 +1,14 @@
 <template>
-  <div>
-    <nav>
-      <ul>
-        <li>
-          <nuxt-link to="/">home</nuxt-link>
-        </li>
-        <li>
-          <nuxt-link to="/about">about</nuxt-link>
-        </li>
-      </ul>
-    </nav>
-  </div>
+  <nav class="cf">
+    <ul>
+      <li>
+        <nuxt-link to="/">home</nuxt-link>
+      </li>
+      <li>
+        <nuxt-link to="/about">about</nuxt-link>
+      </li>
+    </ul>
+  </nav>
 </template>
 
 <script>
@@ -21,14 +19,15 @@ export default {
 
 <style lang="scss" scoped>
 nav {
-  color: #fff;
+  display: table-cell;
+  height: 100%;
+  vertical-align: middle;
   ul {
-    display: flex;
-    justify-content: flex-end;
-    margin-bottom: 0;
+    float: right;
     li {
       list-style-type: none;
       margin-left: 15px;
+      float: left;
       a {
         color: #fff;
         text-decoration: none;

@@ -19,6 +19,7 @@ export default {
 </script>
 <style lang="scss" scoped>
 main {
+  margin-top: 68px;
 }
 .page-enter-active,
 .page-leave-active {

@@ -1,7 +1,7 @@
 <template>
   <div>
     <footer>
-      &copy; dn-blog.
+      &copy; dn.
     </footer>
   </div>
 </template>

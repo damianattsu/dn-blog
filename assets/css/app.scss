@@ -28,6 +28,9 @@ html {
   .contents {
     padding: 60px 0;
     background-color: #fff;
+    @include sp {
+      padding: 40px 0;
+    }
     .wrapper {
       max-width: 1200px;
       margin: 0 auto;

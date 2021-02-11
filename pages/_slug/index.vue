@@ -1,20 +1,18 @@
 <template>
   <section class="contents">
     <div class="wrapper">
-      <main class="main">
-        <h1 class="title">{{ title }}</h1>
-        <p class="publishedAt">{{ publishedAt }}</p>
-        <p class="category">{{ category && category.name }}</p>
-        <div v-if="main_image" class="image-wrapper">
-          <img :src="main_image.url" alt="">
-        </div>
-        <div class="post" v-html="body"></div>
-        <div class="home-back">
-          <nuxt-link to="/">
-            戻る
-          </nuxt-link>
-        </div>
-      </main>
+      <h1 class="title">{{ title }}</h1>
+      <p class="publishedAt">{{ publishedAt }}</p>
+      <p class="category">{{ category && category.name }}</p>
+      <div v-if="main_image" class="image-wrapper">
+        <img :src="main_image.url" alt="">
+      </div>
+      <div class="post" v-html="body"></div>
+      <div class="home-back">
+        <nuxt-link to="/">
+          戻る
+        </nuxt-link>
+      </div>
     </div>
   </section>
 </template>
@@ -50,7 +48,7 @@ export default {
 }
 .publishedAt {
   font-size: 14px;
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .image-wrapper {
   margin-bottom: 20px;
@@ -74,6 +72,7 @@ export default {
     border-bottom: 1px solid #ddd;
   }
   & > p {
+    font-size: 16px;
     line-height: 1.8;
     letter-spacing: 0.2px;
     img {

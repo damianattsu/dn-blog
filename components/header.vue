@@ -1,7 +1,7 @@
 <template>
   <div>
-    <header>
-      <h1>dn</h1>
+    <header class="cf">
+      <h1 class="logo">dn</h1>
       <HeaderNav />
     </header>
   </div>
@@ -18,13 +18,20 @@ export default {
 
 <style lang="scss" scoped>
 header {
-  color: #fff;
-  padding: 20px 15px;
+  padding: 15px 15px;
   background-color: #333333;
-  h1 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 10;
+  width: 100%;
+  display: table;
+  .logo {
+    color: #fff;
     font-size: 24px;
     font-weight: normal;
     letter-spacing: 0.2em;
+    float: left;
   }
 }
 </style>
