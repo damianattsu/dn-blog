@@ -1,6 +1,7 @@
 $pc: 1199px;
 $tab: 991px;
 $sp: 575px;
+$xs: 380px;
 @mixin pc {
   @media (max-width: ($pc)) {
     @content;
@@ -13,6 +14,11 @@ $sp: 575px;
 }
 @mixin sp {
   @media (max-width: ($sp)) {
+    @content;
+  }
+}
+@mixin xs {
+  @media (max-width: ($xs)) {
     @content;
   }
 }

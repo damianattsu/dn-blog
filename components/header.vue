@@ -1,7 +1,7 @@
 <template>
   <div>
     <header>
-      <h1>dn-blog</h1>
+      <h1>dn</h1>
       <HeaderNav />
     </header>
   </div>
@@ -25,7 +25,6 @@ header {
     font-size: 24px;
     font-weight: normal;
     letter-spacing: 0.2em;
-    margin-top: 0;
   }
 }
 </style>

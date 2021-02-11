@@ -19,11 +19,6 @@
 <script>
 import axios from 'axios'
 export default {
-  data() {
-   return {
-    windowWidth: 0
-   }
-  },
   async asyncData({ $config }) {
     const { data } = await axios.get(
       'https://dn-blog.microcms.io/api/v1/blog',
@@ -34,7 +29,6 @@ export default {
     return data
   },
   mounted() {
-    window.addEventListener('resize', this.calculateWindowWidth);
     this.$nextTick(function() {
       const matchHeight = document.getElementsByClassName('point')
       let maxHeight = '0px'
@@ -49,15 +43,6 @@ export default {
       }
     })
   },
-  beforeDestroy() {
-   window.removeEventListener('resize', this.calculateWindowWidth);
-  },
-  methods: {
-   calculateWindowWidth() {
-    this.windowWidth = window.innerWidth;
-    console.log(this.windowWidth);
-   }
-  }
 }
 </script>
 
@@ -74,19 +59,39 @@ export default {
     &:last-child {
       margin-bottom: 0;
     }
+    @include sp {
+      width: 50%;
+    }
     a {
       display: block;
-    }
-    .contents-list-image {
-      height: 300px;
-      background-size: cover;
-      background-position: 50% 50%;
-      background-repeat: no-repeat;
-      @include pc {
-        height: 240px;
+      h2 {
+        font-size: 16px;
+        letter-spacing: 0.1em;
+        margin-top: 5px;
+        @include tab {
+          font-size: 14px;
+        }
+        @include sp {
+          letter-spacing: 0;
+        }
       }
-      @include tab {
-        height: 180px;
+      .contents-list-image {
+        height: 300px;
+        background-size: cover;
+        background-position: 50% 50%;
+        background-repeat: no-repeat;
+        @include pc {
+          height: 240px;
+        }
+        @include tab {
+          height: 180px;
+        }
+        @include sp {
+          height: 140px;
+        }
+        @include xs {
+          height: 120px;
+        }
       }
     }
   }
