@@ -57,17 +57,29 @@ export default {
   },
   generate: {
     async routes() {
+      const limit = 10
+      const range = (start, end) =>
+        [...Array(end - start + 1)].map((_, i) => start + i)
+
       const pages = await axios
-        .get('https://dn-blog.microcms.io/api/v1/blog?limit=100', {
+        .get('https://dn-blog.microcms.io/api/v1/blog?limit=0', {
           headers: { 'X-API-KEY': '0217a727-1f1d-4c5a-bbef-9bf429a7b3fc' }
         })
         .then((res) =>
-          res.data.contents.map((content) => ({
-            route: `/${content.id}`,
-            payload: content
+          range(1, Math.ceil(res.data.totalCount / limit)).map((p) => ({
+            route: `/page/${p}`,
           }))
         )
       return pages
     }
-  }
+  },
+  router: {
+    extendRoutes(routes, resolve) {
+      routes.push({
+        path: '/page/:p',
+        component: resolve(__dirname, 'pages/index.vue'),
+        name: 'page',
+      })
+    },
+  },
 }

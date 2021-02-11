@@ -18,10 +18,13 @@
 
 <script>
 import axios from 'axios'
+
 export default {
-  async asyncData({ $config }) {
+  async asyncData({ params, $config }) {
+    const page = params.p || '1'
+    const limit = 3
     const { data } = await axios.get(
-      'https://dn-blog.microcms.io/api/v1/blog',
+      `https://dn-blog.microcms.io/api/v1/blog?limit=${limit}&offset=${(page - 1) * limit}`,
       {
         headers: { 'X-API-KEY': $config.apiKey }
       }
