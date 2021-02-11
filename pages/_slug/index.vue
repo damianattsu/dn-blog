@@ -9,9 +9,11 @@
           <img :src="main_image.url" alt="">
         </div>
         <div class="post" v-html="body"></div>
-        <nuxt-link to="/">
-          戻る
-        </nuxt-link>
+        <div class="home-back">
+          <nuxt-link to="/">
+            戻る
+          </nuxt-link>
+        </div>
       </main>
     </div>
   </section>
@@ -40,6 +42,8 @@ export default {
 
 <style lang="scss">
 .title {
+  font-size: 20px;
+  font-weight: bold;
   letter-spacing: 0.1em;
   margin-top: 0;
   margin-bottom: 15px;
@@ -49,6 +53,7 @@ export default {
   margin-bottom: 20px;
 }
 .image-wrapper {
+  margin-bottom: 20px;
   img {
     max-width: 100%;
     display: block;
@@ -88,5 +93,8 @@ export default {
       color: #fff;
     }
   }
+}
+.home-back {
+  margin-top: 40px;
 }
 </style>

@@ -1,13 +1,17 @@
 <template>
   <section class="contents">
     <div class="wrapper">
-      <ul>
-        <li v-for="content in contents" :key="content.id">
+      <div class="contents-list-wrapper cf">
+        <div v-for="content in contents" :key="content.id" class="contents-list point">
           <nuxt-link :to="`/${content.id}`">
-            {{ content.title }}
+            <div :style="{ backgroundImage: `url(${ content.main_image.url })` }" class="contents-list-image">
+            </div>
+            <h2>
+              {{ content.title }}
+            </h2>
           </nuxt-link>
-        </li>
-      </ul>
+        </div>
+      </div>
     </div>
   </section>
 </template>
@@ -15,6 +19,11 @@
 <script>
 import axios from 'axios'
 export default {
+  data() {
+   return {
+    windowWidth: 0
+   }
+  },
   async asyncData({ $config }) {
     const { data } = await axios.get(
       'https://dn-blog.microcms.io/api/v1/blog',
@@ -23,18 +32,62 @@ export default {
       }
     )
     return data
+  },
+  mounted() {
+    window.addEventListener('resize', this.calculateWindowWidth);
+    this.$nextTick(function() {
+      const matchHeight = document.getElementsByClassName('point')
+      let maxHeight = '0px'
+      for (let i = 0; i < matchHeight.length; i++) {
+        const height = window.getComputedStyle(matchHeight[i]).height
+        if (maxHeight < height) {
+          maxHeight = height
+        }
+      }
+      for (let i = 0; i < matchHeight.length; i++) {
+        matchHeight[i].style.height = maxHeight
+      }
+    })
+  },
+  beforeDestroy() {
+   window.removeEventListener('resize', this.calculateWindowWidth);
+  },
+  methods: {
+   calculateWindowWidth() {
+    this.windowWidth = window.innerWidth;
+    console.log(this.windowWidth);
+   }
   }
 }
 </script>
 
 <style lang="scss" scoped>
-ul {
-  padding-left: 0;
-  li {
-    margin-bottom: 15px;
-    list-style-type: none;
+@import '../assets/css/app.scss';
+
+.contents-list-wrapper {
+  margin: 0 -10px;
+  .contents-list {
+    float: left;
+    width: 33.3333%;
+    padding: 0 10px;
+    margin-bottom: 20px;
     &:last-child {
       margin-bottom: 0;
+    }
+    a {
+      display: block;
+    }
+    .contents-list-image {
+      height: 300px;
+      background-size: cover;
+      background-position: 50% 50%;
+      background-repeat: no-repeat;
+      @include pc {
+        height: 240px;
+      }
+      @include tab {
+        height: 180px;
+      }
     }
   }
 }

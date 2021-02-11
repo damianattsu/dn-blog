@@ -1,16 +1,38 @@
-html {
-  background-color: #333;
-  body {
-    margin: 0 auto;
+$pc: 1199px;
+$tab: 991px;
+$sp: 575px;
+@mixin pc {
+  @media (max-width: ($pc)) {
+    @content;
+  }
+}
+@mixin tab {
+  @media (max-width: ($tab)) {
+    @content;
+  }
+}
+@mixin sp {
+  @media (max-width: ($sp)) {
+    @content;
   }
 }
 
-.contents {
-  padding: 60px 0;
-  background-color: #fff;
-  .wrapper {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 0 15px;
+html {
+  background-color: #333;
+  .contents {
+    padding: 60px 0;
+    background-color: #fff;
+    .wrapper {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+  }
+  .cf {
+    &::before, &::after {
+      display: table;
+      clear: both;
+      content: '';
+    }
   }
 }
