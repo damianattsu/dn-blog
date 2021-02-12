@@ -2,7 +2,7 @@
   <section class="contents">
     <div class="wrapper">
       <div class="contents-list-wrapper cf">
-        <div v-for="content in contents" :key="content.id" class="contents-list point">
+        <div v-for="content in contents" :key="content.id" class="contents-list match-height">
           <nuxt-link :to="`/${content.id}`">
             <div :style="{ backgroundImage: `url(${ content.main_image.url })` }" class="contents-list-image">
             </div>
@@ -11,6 +11,15 @@
             </h2>
           </nuxt-link>
         </div>
+      </div>
+      <div class="pager">
+        <ul class="cf">
+          <li v-for="page in pageCount">
+            <nuxt-link :to="'/page/' + (page)" :class="'page0' + (page)">
+              {{ page }}
+            </nuxt-link>
+          </li>
+        </ul>
       </div>
     </div>
   </section>
@@ -22,7 +31,7 @@ import axios from 'axios'
 export default {
   async asyncData({ params, $config }) {
     const page = params.p || '1'
-    const limit = 3
+    const limit = 6
     const { data } = await axios.get(
       `https://dn-blog.microcms.io/api/v1/blog?limit=${limit}&offset=${(page - 1) * limit}`,
       {
@@ -33,7 +42,7 @@ export default {
   },
   mounted() {
     this.$nextTick(function() {
-      const matchHeight = document.getElementsByClassName('point')
+      const matchHeight = document.getElementsByClassName('match-height')
       let maxHeight = '0px'
       for (let i = 0; i < matchHeight.length; i++) {
         const height = window.getComputedStyle(matchHeight[i]).height
@@ -46,7 +55,15 @@ export default {
       }
     })
   },
+  computed: {
+    pageCount: function () {
+      return Math.ceil( this.totalCount / this.limit);
+    }
+  }
 }
+
+
+
 </script>
 
 <style lang="scss" scoped>
@@ -85,6 +102,8 @@ export default {
         background-size: cover;
         background-position: 50% 50%;
         background-repeat: no-repeat;
+        filter: grayscale(0);
+        transition: ease .4s;
         @include pc {
           height: 240px;
         }
@@ -96,6 +115,38 @@ export default {
         }
         @include xs {
           height: 120px;
+        }
+      }
+      &:hover {
+        .contents-list-image {
+          filter: grayscale(80%);
+          transition: ease .4s;
+        }
+      }
+    }
+  }
+}
+.pager {
+  margin-top: 20px;
+  text-align: center;
+  ul {
+    display: inline-block;
+    margin: 0 -5px;
+    li {
+      float: left;
+      padding: 0 5px;
+      a {
+        color: #fff;
+        font-weight: bold;
+        text-align: center;
+        display: inline-block;
+        padding: 5px 10px;
+        background-color: #333;
+        transition: ease .4s;
+        &:hover {
+          color: #333;
+          background-color: #fff;
+          transition: ease .4s;
         }
       }
     }
