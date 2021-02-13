@@ -2,7 +2,7 @@
   <section class="contents">
     <div class="wrapper">
       <h1 class="title">{{ title }}</h1>
-      <p class="publishedAt">{{ publishedAt }}</p>
+      <p class="publishedAt">{{ new Date(publishedAt).toLocaleDateString() }}</p>
       <p class="category">{{ category && category.name }}</p>
       <div v-if="main_image" class="image-wrapper">
         <img :src="main_image.url" alt="">
