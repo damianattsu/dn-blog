@@ -14,9 +14,14 @@
       </div>
       <div class="pager">
         <ul class="cf">
-          <li v-for="page in pageCount">
-            <nuxt-link :to="'/page/' + (page)" :class="'page0' + (page)">
-              {{ page }}
+          <li>
+            <nuxt-link :to="'/'" exact-active-class="current">
+              1
+            </nuxt-link>
+          </li>
+          <li v-for="page in ((pageCount)-1)" :key="page.id">
+            <nuxt-link :to="'/page/' + ((page)+1)" :class="'page0' + ((page)+1)" exact-active-class="current">
+              {{ ((page)+1) }}
             </nuxt-link>
           </li>
         </ul>
@@ -136,17 +141,20 @@ export default {
       float: left;
       padding: 0 5px;
       a {
-        color: #fff;
         font-weight: bold;
         text-align: center;
         display: inline-block;
         padding: 5px 10px;
-        background-color: #333;
+        background-color: #e7e7e7;
         transition: ease .4s;
         &:hover {
-          color: #333;
-          background-color: #fff;
+          color: #fff;
+          background-color: #333;
           transition: ease .4s;
+        }
+        &.current {
+          color: #fff;
+          background-color: #333;
         }
       }
     }
