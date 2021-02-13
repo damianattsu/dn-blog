@@ -2,7 +2,7 @@
   <section class="contents">
     <div class="wrapper">
       <h1 class="title">{{ title }}</h1>
-      <p class="publishedAt">{{ new Date(publishedAt).toLocaleDateString() }}</p>
+      <p class="publishedAt">{{ publishedDate() }}</p>
       <p class="category">{{ category && category.name }}</p>
       <div v-if="main_image" class="image-wrapper">
         <img :src="main_image.url" alt="">
@@ -34,6 +34,11 @@ export default {
       }
     )
     return data
+  },
+  methods: {
+    publishedDate(publishedAt) {
+      return new Date(this.publishedAt).toLocaleDateString()
+    }
   }
 }
 </script>
@@ -86,5 +91,8 @@ export default {
 }
 .home-back {
   margin-top: 40px;
+  a {
+    font-weight: bold;
+  }
 }
 </style>
