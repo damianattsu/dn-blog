@@ -2,15 +2,15 @@
   <section class="contents">
     <div class="wrapper">
       <div class="post-wrapper">
-        <h1 class="title">{{ title }}</h1>
+        <h1 class="title">{{ item.title }}</h1>
         <div class="post-label">
-          <p class="category">{{ category && category.name }}</p>
+          <p v-if="item.category" class="category">{{ item.category && item.category.name }}</p>
           <p class="date-published">{{ publishedDate() }}</p>
         </div>
-        <div v-if="main_image" class="image-wrapper">
-          <img :src="main_image.url" alt="">
+        <div v-if="item.main_image" class="image-wrapper">
+          <img :src="item.main_image.url" alt="">
         </div>
-        <div class="post" v-html="body"></div>
+        <div class="post" v-html="item.body"></div>
       </div>
       <div class="home-back">
         <nuxt-link to="/">
@@ -25,6 +25,11 @@
 import axios from 'axios'
 
 export default {
+  head() {
+    return {
+      title: this.item.title,
+    }
+  },
   data() {
     return {
       main_image: ''
@@ -37,11 +42,13 @@ export default {
         headers: { 'X-API-KEY': $config.apiKey }
       }
     )
-    return data
+    return {
+      item: data
+    };
   },
   methods: {
     publishedDate(publishedAt) {
-      return new Date(this.publishedAt).toLocaleDateString()
+      return new Date(this.item.publishedAt).toLocaleDateString()
     }
   }
 }
