@@ -1,7 +1,7 @@
 <template>
   <div>
     <header class="cf">
-      <h1 class="logo">dn</h1>
+      <h1 class="logo">dn64</h1>
       <HeaderNav />
     </header>
   </div>
@@ -29,7 +29,7 @@ header {
   .logo {
     color: #fff;
     font-size: 24px;
-    font-weight: normal;
+    font-weight: 900;
     letter-spacing: 2px;
     float: left;
   }
